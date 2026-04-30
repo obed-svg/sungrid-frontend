@@ -1,5 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { createUser, deactivateUser, listUsers, updateUser, type CreateUserInput } from "@/api/users";
+import { createUser, deactivateUser, deleteUser, listUsers, updateUser, type CreateUserInput } from "@/api/users";
 import type { User } from "@/api/types";
 
 export function useUsers() {
@@ -13,7 +13,7 @@ export function useUsers() {
     onSuccess: invalidate,
   });
   const deactivate = useMutation({ mutationFn: deactivateUser, onSuccess: invalidate });
+  const destroy = useMutation({ mutationFn: deleteUser, onSuccess: invalidate });
 
-  return { users, create, update, deactivate };
+  return { users, create, update, deactivate, destroy };
 }
-

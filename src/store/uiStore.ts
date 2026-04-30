@@ -6,7 +6,7 @@ export interface Toast {
   message: string;
 }
 
-interface UiState {
+export interface UiState {
   toasts: Toast[];
   pushToast: (toast: Omit<Toast, "id">) => void;
   dismissToast: (id: number) => void;

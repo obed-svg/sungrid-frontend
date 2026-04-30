@@ -14,7 +14,7 @@ interface ProjectForm {
 
 export function AdminProjectsPage(): JSX.Element {
   const queryClient = useQueryClient();
-  const projects = useProjects();
+  const { projects, destroy } = useProjects();
   const { register, handleSubmit, reset } = useForm<ProjectForm>({
     defaultValues: { port: 8000, master_id: 2, outstation_id: 1 },
   });
@@ -58,6 +58,17 @@ export function AdminProjectsPage(): JSX.Element {
                   <Button variant="ghost" onClick={() => toggle.mutate({ id: project.id, enabled: !project.enabled })}>
                     {project.enabled ? "Disable" : "Enable"}
                   </Button>
+                  <Button
+                    variant="ghost"
+                    className="text-red-600 hover:text-red-700"
+                    onClick={() => {
+                      if (window.confirm(`¿Eliminar proyecto "${project.name}"? Esta acción no se puede deshacer.`)) {
+                        destroy.mutate(project.id);
+                      }
+                    }}
+                  >
+                    Delete
+                  </Button>
                 </td>
               </tr>
             ))}
@@ -67,4 +78,3 @@ export function AdminProjectsPage(): JSX.Element {
     </div>
   );
 }
-

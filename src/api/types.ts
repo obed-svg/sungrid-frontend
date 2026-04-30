@@ -39,6 +39,8 @@ export interface TelemetryRecord {
   ut: number | null;
   freq: number | null;
   pf: number | null;
+  p: number | null;
+  q: number | null;
   breaker_close: boolean | null;
   breaker_open: boolean | null;
 }
@@ -94,7 +96,7 @@ export interface Paginated<T> {
 }
 
 export type TelemetryWsEvent =
-  | ({ type: "telemetry.update"; project_id: number } & Partial<TelemetryRecord>)
+  | { type: "telemetry.update"; project_id: number; data: Partial<TelemetryRecord> }
   | {
       type: "maneuver.complete";
       project_id: number;
@@ -103,4 +105,3 @@ export type TelemetryWsEvent =
       post_status: DerivedStatus;
     }
   | { type: "device.offline"; project_id: number; reason: string };
-

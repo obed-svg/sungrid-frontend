@@ -5,7 +5,8 @@ export function useTelemetryLatest(projectId: number) {
   return useQuery({
     queryKey: ["telemetry", "latest", projectId],
     queryFn: () => fetchLatest(projectId),
-    staleTime: 15_000,
+    staleTime: 10_000,
+    refetchInterval: 10_000,
   });
 }
 

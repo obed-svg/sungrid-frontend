@@ -24,6 +24,9 @@ export async function updateUser(id: number, input: Partial<User>): Promise<User
 }
 
 export async function deactivateUser(id: number): Promise<void> {
-  await api.delete(`/api/users/${id}/`);
+  await api.patch(`/api/users/${id}/`, { is_active: false });
 }
 
+export async function deleteUser(id: number): Promise<void> {
+  await api.delete(`/api/users/${id}/`);
+}

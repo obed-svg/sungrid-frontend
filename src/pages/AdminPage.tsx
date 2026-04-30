@@ -11,13 +11,17 @@ export function AdminPage(): JSX.Element {
   return (
     <Shell>
       <h1 className="text-2xl font-bold">Admin</h1>
-      <nav className="mt-5 flex gap-2 border-b border-zinc-800">
+      <nav className="mt-5 flex gap-2 border-b border-brand-blue-200">
         {tabs.map((tab) => (
           <NavLink
             key={tab.to}
             to={tab.to}
             className={({ isActive }) =>
-              `px-4 py-3 text-sm ${isActive ? "border-b-2 border-cyan-500 text-white" : "text-zinc-400"}`
+              `px-4 py-3 text-sm font-semibold ${
+                isActive
+                  ? "border-b-2 border-brand-blue-600 text-brand-blue-950"
+                  : "text-slate-500 hover:text-brand-blue-800"
+              }`
             }
           >
             {tab.label}

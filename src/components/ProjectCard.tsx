@@ -5,7 +5,10 @@ import { useTelemetryLatest } from "@/hooks/useTelemetryLatest";
 
 export function ProjectCard({ project }: { project: Project }): JSX.Element {
   const latest = useTelemetryLatest(project.id);
-  const status = latest.data?.derived_status ?? "OFFLINE";
+
+  // 404 from backend means either no data ever, or data is stale (> 6 min old)
+  const hasFreshData = !latest.isError && latest.data != null;
+  const status = hasFreshData ? latest.data.derived_status : "OFFLINE";
 
   return (
     <Link
@@ -15,26 +18,28 @@ export function ProjectCard({ project }: { project: Project }): JSX.Element {
       <div className="flex items-start justify-between gap-3">
         <div>
           <h2 className="text-lg font-semibold text-brand-blue-950">{project.name}</h2>
-          <p className="mt-1 font-mono text-xs text-slate-500">
-            {project.ip}:{project.port}
-          </p>
         </div>
         <StatusBadge status={status} />
       </div>
-      <dl className="mt-5 grid grid-cols-3 gap-3 text-sm">
-        <div>
-          <dt className="label">Ua</dt>
-          <dd className="font-mono text-brand-blue-900">{latest.data?.ua?.toFixed(0) ?? "--"} V</dd>
-        </div>
-        <div>
-          <dt className="label">Ia</dt>
-          <dd className="font-mono text-brand-blue-900">{latest.data?.ia?.toFixed(1) ?? "--"} A</dd>
-        </div>
-        <div>
-          <dt className="label">PF</dt>
-          <dd className="font-mono text-brand-blue-900">{latest.data?.pf?.toFixed(2) ?? "--"}</dd>
-        </div>
-      </dl>
+
+      {hasFreshData ? (
+        <dl className="mt-5 grid grid-cols-3 gap-3 text-sm">
+          <div>
+            <dt className="label">Ua</dt>
+            <dd className="font-mono text-brand-blue-900">{latest.data.ua?.toFixed(0) ?? "--"} V</dd>
+          </div>
+          <div>
+            <dt className="label">P</dt>
+            <dd className="font-mono text-brand-blue-900">{latest.data.p?.toFixed(0) ?? "--"} kW</dd>
+          </div>
+          <div>
+            <dt className="label">Q</dt>
+            <dd className="font-mono text-brand-blue-900">{latest.data.q?.toFixed(0) ?? "--"} kvar</dd>
+          </div>
+        </dl>
+      ) : (
+        <p className="mt-5 text-sm font-medium text-slate-400">No hay datos disponibles</p>
+      )}
     </Link>
   );
 }
