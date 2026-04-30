@@ -5,7 +5,7 @@ const styles: Record<DerivedStatus | "OFFLINE", string> = {
   CLOSED: "border-green-700 bg-green-950 text-green-200",
   OPEN: "border-red-700 bg-red-950 text-red-200",
   ERROR: "border-yellow-700 bg-yellow-950 text-yellow-200",
-  OFFLINE: "border-zinc-700 bg-zinc-900 text-zinc-300",
+  OFFLINE: "border-slate-300 bg-slate-100 text-slate-600",
 };
 
 export function StatusBadge({
@@ -21,4 +21,3 @@ export function StatusBadge({
     </span>
   );
 }
-

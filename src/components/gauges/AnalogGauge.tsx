@@ -18,16 +18,17 @@ export function AnalogGauge({
     <div className="panel p-4">
       <div className="flex items-center justify-between">
         <span className="label">{label}</span>
-        <span className="font-mono text-lg">{value == null ? "--" : safe.toFixed(unit === "PF" ? 2 : 1)}</span>
+        <span className="font-mono text-lg text-brand-blue-950">
+          {value == null ? "--" : safe.toFixed(unit === "PF" ? 2 : 1)}
+        </span>
       </div>
-      <div className="mt-3 h-2 bg-zinc-800">
+      <div className="mt-3 h-2 bg-brand-blue-100">
         <div
-          className={cn("h-full", pct > 85 ? "bg-yellow-500" : "bg-cyan-500")}
+          className={cn("h-full", pct > 85 ? "bg-yellow-500" : "bg-brand-blue-600")}
           style={{ width: `${pct}%` }}
         />
       </div>
-      <div className="mt-2 text-right text-xs text-zinc-500">{unit}</div>
+      <div className="mt-2 text-right text-xs text-slate-500">{unit}</div>
     </div>
   );
 }
-

@@ -3,6 +3,20 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --brand-blue-50: #f1f9fe;
+    --brand-blue-100: #e2f3fc;
+    --brand-blue-200: #bee6f9;
+    --brand-blue-300: #85d2f4;
+    --brand-blue-400: #44bcec;
+    --brand-blue-500: #1ba4dc;
+    --brand-blue-600: #0e85bd;
+    --brand-blue-700: #0d6997;
+    --brand-blue-800: #0f597d;
+    --brand-blue-900: #124a68;
+    --brand-blue-950: #0c2f45;
+  }
+
   html,
   body,
   #root {
@@ -10,7 +24,8 @@
   }
 
   body {
-    @apply bg-zinc-950 text-zinc-100 antialiased;
+    @apply bg-slate-50 text-slate-950 antialiased;
+    font-family: Montserrat, Poppins, Inter, ui-sans-serif, system-ui, sans-serif;
   }
 
   button,
@@ -22,15 +37,14 @@
 
 @layer components {
   .panel {
-    @apply border border-zinc-800 bg-zinc-900/70;
+    @apply border border-slate-200 bg-white shadow-sm;
   }
 
   .field {
-    @apply h-10 w-full border border-zinc-700 bg-zinc-950 px-3 text-sm text-zinc-100 outline-none focus:border-cyan-500;
+    @apply h-10 w-full border border-slate-300 bg-white px-3 text-sm text-slate-950 outline-none focus:border-brand-blue-600 focus:ring-2 focus:ring-brand-blue-100;
   }
 
   .label {
-    @apply text-xs font-semibold uppercase tracking-normal text-zinc-400;
+    @apply text-xs font-semibold uppercase tracking-normal text-slate-500;
   }
 }
-
