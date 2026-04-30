@@ -31,8 +31,16 @@ export function Shell({ children }: { children: ReactNode }): JSX.Element {
       <header className="border-b border-brand-blue-100 bg-white">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3">
           <Link to="/" className="flex items-center gap-3 text-lg font-bold text-brand-blue-950">
-            <span className="grid size-9 place-items-center bg-brand-blue-600 text-sm text-white">SG</span>
-            <span>SUN-GRID Control</span>
+            <span className="flex h-10 w-36 items-center overflow-hidden">
+              <img
+                src="/branding/solenium-logo.png"
+                alt="Solenium"
+                className="h-10 w-auto object-contain"
+              />
+            </span>
+            <span className="hidden border-l border-brand-blue-200 pl-3 text-sm font-semibold uppercase text-brand-blue-800 sm:inline">
+              SUN-GRID Control
+            </span>
           </Link>
           <nav className="flex items-center gap-2 text-sm">
             <NavLink

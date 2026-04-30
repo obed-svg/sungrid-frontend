@@ -30,10 +30,15 @@ export function LoginPage(): JSX.Element {
   });
 
   return (
-    <div className="grid min-h-screen place-items-center bg-zinc-950 px-4">
+    <div className="grid min-h-screen place-items-center bg-brand-blue-50 px-4">
       <form onSubmit={submit} className="panel w-full max-w-sm p-6">
-        <h1 className="text-2xl font-bold">SUN-GRID Control</h1>
-        <p className="mt-2 text-sm text-zinc-400">Secure operator access</p>
+        <img
+          src="/branding/solenium-logo.png"
+          alt="Solenium"
+          className="h-16 w-auto object-contain"
+        />
+        <h1 className="mt-6 text-2xl font-bold text-brand-blue-950">SUN-GRID Control</h1>
+        <p className="mt-2 text-sm text-slate-500">Secure operator access</p>
         <label className="mt-6 block">
           <span className="label">Username</span>
           <input className="field mt-2" autoComplete="username" {...register("username", { required: true })} />
@@ -50,4 +55,3 @@ export function LoginPage(): JSX.Element {
     </div>
   );
 }
-
