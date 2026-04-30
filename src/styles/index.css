@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-zinc-950 text-zinc-100 antialiased;
+  }
+
+  button,
+  input,
+  select {
+    font: inherit;
+  }
+}
+
+@layer components {
+  .panel {
+    @apply border border-zinc-800 bg-zinc-900/70;
+  }
+
+  .field {
+    @apply h-10 w-full border border-zinc-700 bg-zinc-950 px-3 text-sm text-zinc-100 outline-none focus:border-cyan-500;
+  }
+
+  .label {
+    @apply text-xs font-semibold uppercase tracking-normal text-zinc-400;
+  }
+}
+
