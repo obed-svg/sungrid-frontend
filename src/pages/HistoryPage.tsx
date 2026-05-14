@@ -23,10 +23,16 @@ export function HistoryPage(): JSX.Element {
               <th className="px-3 py-3">Ua</th>
               <th className="px-3 py-3">Ub</th>
               <th className="px-3 py-3">Uc</th>
+              <th className="px-3 py-3">Ur</th>
+              <th className="px-3 py-3">Us</th>
+              <th className="px-3 py-3">Ut</th>
               <th className="px-3 py-3">Ia</th>
               <th className="px-3 py-3">Ib</th>
               <th className="px-3 py-3">Ic</th>
+              <th className="px-3 py-3">Freq</th>
               <th className="px-3 py-3">PF</th>
+              <th className="px-3 py-3">P</th>
+              <th className="px-3 py-3">Q</th>
             </tr>
           </thead>
           <tbody>
@@ -37,10 +43,16 @@ export function HistoryPage(): JSX.Element {
                 <td className="px-3 py-3">{row.ua ?? "--"}</td>
                 <td className="px-3 py-3">{row.ub ?? "--"}</td>
                 <td className="px-3 py-3">{row.uc ?? "--"}</td>
+                <td className="px-3 py-3">{row.ur ?? "--"}</td>
+                <td className="px-3 py-3">{row.us ?? "--"}</td>
+                <td className="px-3 py-3">{row.ut ?? "--"}</td>
                 <td className="px-3 py-3">{row.ia ?? "--"}</td>
                 <td className="px-3 py-3">{row.ib ?? "--"}</td>
                 <td className="px-3 py-3">{row.ic ?? "--"}</td>
+                <td className="px-3 py-3">{row.freq ?? "--"}</td>
                 <td className="px-3 py-3">{row.pf ?? "--"}</td>
+                <td className="px-3 py-3">{row.p ?? "--"}</td>
+                <td className="px-3 py-3">{row.q ?? "--"}</td>
               </tr>
             ))}
           </tbody>
